@@ -4,7 +4,6 @@ Created on Tue Jul 12 15:04:56 2016
 
 @author: guttag
 """
-from pyannotate_runtime.collect_types import running
 
 
 class Node(object):
@@ -99,35 +98,5 @@ def buildCityGraph(graphType):
     g.addEdge(Edge(g.getNode('Los Angeles'), g.getNode('Boston')))
     return g
 
-nodes = []
-nodes.append(Node("ABC")) # nodes[0]
-nodes.append(Node("ACB")) # nodes[1]
-nodes.append(Node("BAC")) # nodes[2]
-nodes.append(Node("BCA")) # nodes[3]
-nodes.append(Node("CAB")) # nodes[4]
-nodes.append(Node("CBA")) # nodes[5]
 
-g = Graph()
-
-for n in nodes:
-    g.addNode(n)
-
-def edge_validation(src, dest):
-    src_node = [char for char in str(src)]
-    dest_node = [char for char in str(dest)]
-
-    permutation_len = len(src_node)
-    chars_allowed_to_permute = 2
-    target_permute_param = permutation_len - chars_allowed_to_permute
-    print(src_node, dest_node)
-    same_char_counter = 0
-    for char in range(permutation_len):
-        if src_node[char] == dest_node[char]:
-            print(src_node[char], dest_node[char])
-            same_char_counter += 1
-            if same_char_counter >= target_permute_param:
-                return True
-        else:
-            return False
-
-print(edge_validation(nodes[0], nodes[2]))
+print(buildCityGraph(Graph))
