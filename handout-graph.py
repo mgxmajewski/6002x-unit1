@@ -4,6 +4,7 @@ Created on Tue Jul 12 15:04:56 2016
 
 @author: guttag
 """
+from pyannotate_runtime.collect_types import running
 
 
 class Node(object):
@@ -98,5 +99,23 @@ def buildCityGraph(graphType):
     g.addEdge(Edge(g.getNode('Los Angeles'), g.getNode('Boston')))
     return g
 
+nodes = []
+nodes.append(Node("ABC")) # nodes[0]
+nodes.append(Node("ACB")) # nodes[1]
+nodes.append(Node("BAC")) # nodes[2]
+nodes.append(Node("BCA")) # nodes[3]
+nodes.append(Node("CAB")) # nodes[4]
+nodes.append(Node("CBA")) # nodes[5]
 
-print(buildCityGraph(Graph))
+g = Graph()
+
+for n in nodes:
+    g.addNode(n)
+
+def edge_validation(src, dest):
+    src_node = src
+    dest_node = dest
+    print(src_node, dest_node)
+    
+    
+print(edge_validation(nodes[0], nodes[1]))
