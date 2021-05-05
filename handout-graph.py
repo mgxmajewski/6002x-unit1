@@ -113,9 +113,21 @@ for n in nodes:
     g.addNode(n)
 
 def edge_validation(src, dest):
-    src_node = src
-    dest_node = dest
+    src_node = [char for char in str(src)]
+    dest_node = [char for char in str(dest)]
+
+    permutation_len = len(src_node)
+    chars_allowed_to_permute = 2
+    target_permute_param = permutation_len - chars_allowed_to_permute
     print(src_node, dest_node)
-    
-    
-print(edge_validation(nodes[0], nodes[1]))
+    same_char_counter = 0
+    for char in range(permutation_len):
+        if src_node[char] == dest_node[char]:
+            print(src_node[char], dest_node[char])
+            same_char_counter += 1
+            if same_char_counter >= target_permute_param:
+                return True
+        else:
+            return False
+
+print(edge_validation(nodes[0], nodes[2]))
